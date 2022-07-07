@@ -1,0 +1,17 @@
+openapi: 3.0.0
+info:
+  title: 'TaskHub'
+  description: 'Medical Health Toolbox for practitionor and patient'
+  termsOfService: https://www.interactivelife.com/terms/
+  contact:
+    email: support@interactivelife.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Interactivelife.com
+  url: https://www.interactivelife.com
+servers:
+- url: http://localhost:3000/
+  description: Development server

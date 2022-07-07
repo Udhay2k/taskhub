@@ -1,0 +1,33 @@
+components:
+  schemas:
+    Task:
+      type: object
+      properties:
+        name:
+          type: string
+        uuid:
+          type: string
+        action:
+          type: string
+        settings:
+          type: object
+        organizationId:
+          $ref: "#/components/schemas/listobj"      
+        sessionId:
+          $ref: "#/components/schemas/listobj"               
+
+    TaskUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        uuid:
+          type: string
+        action:
+          type: string
+        settings:
+          type: object
+        organizationId:
+          $ref: "#/components/schemas/listobj"      
+        sessionId:
+          $ref: "#/components/schemas/listobj"   

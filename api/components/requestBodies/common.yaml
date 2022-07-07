@@ -1,0 +1,19 @@
+components:
+  requestBodies:
+    Search:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Search"
+      description: get the users list based on query
+      x-name: body
+      required: true
+
+    Common:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Common"
+      description: Common object that needs to be added to the db
+      x-name: body
+      required: true

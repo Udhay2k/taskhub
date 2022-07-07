@@ -1,0 +1,156 @@
+paths:
+  '/taskhub':
+    post:
+      tags:
+        - 'Task'
+      summary: Create a task
+      description: This can only be done by the logged in user.
+      operationId: 'create'
+      security:
+        - AccessToken: []
+      requestBody:
+        $ref: '#/components/requestBodies/Task'
+      responses:
+        default:
+          description: successful operation
+      x-swagger-router-controller: 'task'
+  '/taskhub/metadata':
+    get:
+      tags:
+        - 'Task'
+      summary: 'metadata for dynamic UI'
+      operationId: 'metadata'
+      security: []
+      parameters:
+        - name: fields
+          in: query
+          description: field values that need to be considered for filter
+          explode: false
+          style: form
+          allowReserved: true
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Invalid request
+      x-swagger-router-controller: 'task'
+  '/taskhub/search':
+    post:
+      tags:
+        - 'Task'
+      summary: search/filter the Task list
+      description: created search/filter object.
+      operationId: 'search'
+      security:
+        - AccessToken: []
+      requestBody:
+        $ref: '#/components/requestBodies/Search'
+      responses:
+        default:
+          description: successful operation
+      x-swagger-router-controller: 'task'
+  '/taskhub/search/summary':
+    post:
+      tags:
+        - 'Task'
+      summary: search/filter the Task list
+      description: created search/filter object.
+      operationId: 'summary'
+      security:
+        - AccessToken: []
+      requestBody:
+        $ref: '#/components/requestBodies/Search'
+      responses:
+        default:
+          description: successful operation
+      x-swagger-router-controller: 'task'         
+  '/taskhub/{id}/get':
+    get:
+      tags:
+        - 'Task'
+      summary: 'Get task by id'
+      operationId: 'get'
+      security:
+        - AccessToken: []
+      parameters:
+        - name: 'id'
+          in: 'path'
+          description: 'Task _Id to be fetched'
+          required: true
+          schema:
+            properties:
+              uid:
+                type: 'string'
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Invalid request
+      x-swagger-router-controller: 'task'
+  '/taskhub/{id}/update':
+    post:
+      tags:
+        - 'Task'
+      summary: "Update Task"
+      operationId: 'update'
+      security:
+        - AccessToken: []
+      parameters:
+        - name: 'id'
+          in: 'path'
+          description: 'The task _id that need to be updated'
+          required: true
+          schema:
+            properties:
+              uid:
+                type: 'string'
+      requestBody:
+        $ref: '#/components/requestBodies/DiagnosticUpdate'
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Invalid request
+      x-swagger-router-controller: 'task'
+  '/taskhub/{id}/delete':
+    post:
+      tags:
+        - 'Task'
+      summary: 'Delete task by _id'
+      operationId: 'delete'
+      security:
+        - AccessToken: []
+      parameters:
+        - name: 'id'
+          in: 'path'
+          description: '_id needed to delete task'
+          required: true
+          schema:
+            properties:
+              uid:
+                type: 'string'
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Invalid request
+      x-swagger-router-controller: 'task'
+  '/taskhub/list':
+    get:
+      tags:
+        - 'Task'
+      summary: 'List out all diagnostics'
+      operationId: 'list'
+      security:
+        - AccessToken: []
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Invalid request
+      x-swagger-router-controller: 'task'
+  

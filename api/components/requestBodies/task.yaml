@@ -1,0 +1,19 @@
+components:
+  requestBodies:
+    Task:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Task"
+      description: create a practitioner
+      x-name: body
+      required: true
+
+    TaskUpdate:
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/TaskUpdate"
+      description: update a practitioner
+      x-name: body
+      required: true

@@ -1,0 +1,123 @@
+components:
+  schemas:
+    Common:
+      type: object
+      properties:
+        _id:
+          type: string
+        name:
+          type: string
+
+    EnumObject:
+      type: object
+      properties:
+        displayName:
+          type: string
+        value:
+          type: string
+
+    listobj:
+      type: object
+      properties:
+        _id:
+          type: string
+        name:
+          type: string
+
+    Error:
+      type: object
+      properties:
+        status:
+          type: boolean
+          default: false
+        message:
+          type: string
+      required:
+        - status
+        - message
+
+    Pagination:
+      type: "object"
+      properties:
+        count:
+          type: integer
+        more:
+          type: "boolean"
+          default: false
+        offset:
+          type: integer
+        page:
+          type: integer
+        total:
+          type: integer
+      example:
+        count: 10
+        more: true
+        offset: 10
+        page: 1
+        total: 100
+
+    Search:
+      type: "object"
+      properties:
+        count:
+          type: integer
+        order:
+          type: array
+          items:
+            type: object
+        page:
+          type: integer
+        term:
+          type: string
+        termfields:
+          type: array
+          items:
+            type: string
+        fields:
+          type: array
+          items:
+            type: string
+        filter:
+          type: object
+        exclude:
+          type: array
+          items:
+            type: string
+        include:
+          type: array
+          items:
+            type: string
+      example:
+        count: 10
+        order: [{ field: "_id", order: "asc" }]
+        page: 1
+        term: ""
+        fields: ["_id"]
+        termfields: ["_id"]
+        filter: {}
+        exclude: []
+        include: []
+
+### response schemas ###
+    CommonListApiResponse:
+      type: "object"
+      properties:
+        status:
+          type: boolean
+          default: false
+        pagination:
+          $ref: "#/components/schemas/Pagination"
+        results:
+          type: array
+          items:
+            $ref: "#/components/schemas/Common"
+
+    CommonApiResponse:
+      type: "object"
+      properties:
+        status:
+          type: boolean
+          default: false
+        results:
+          $ref: "#/components/schemas/Common"
