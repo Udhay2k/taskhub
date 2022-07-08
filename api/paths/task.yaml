@@ -1,18 +1,4 @@
 paths:
-  '/taskhub':
-    post:
-      tags:
-        - 'Task'
-      summary: Create a task
-      description: This can only be done by the logged in user.
-      operationId: 'create'
-      security: []
-      requestBody:
-        $ref: '#/components/requestBodies/Task'
-      responses:
-        default:
-          description: successful operation
-      x-swagger-router-controller: 'task'
   '/taskhub/metadata':
     get:
       tags:
@@ -37,6 +23,19 @@ paths:
         '400':
           description: Invalid request
       x-swagger-router-controller: 'task'
+  '/taskhub/list':
+    get:
+      tags:
+        - 'Task'
+      summary: 'List out all diagnostics'
+      operationId: 'list'
+      security: []
+      responses:
+        '200':
+          description: successful operation
+        '400':
+          description: Invalid request
+      x-swagger-router-controller: 'task'      
   '/taskhub/search':
     post:
       tags:
@@ -133,17 +132,19 @@ paths:
         '400':
           description: Invalid request
       x-swagger-router-controller: 'task'
-  '/taskhub/list':
-    get:
+
+  '/taskhub':
+    post:
       tags:
         - 'Task'
-      summary: 'List out all diagnostics'
-      operationId: 'list'
+      summary: Create a task
+      description: This can only be done by the logged in user.
+      operationId: 'create'
       security: []
+      requestBody:
+        $ref: '#/components/requestBodies/Task'
       responses:
-        '200':
+        default:
           description: successful operation
-        '400':
-          description: Invalid request
-      x-swagger-router-controller: 'task'
+      x-swagger-router-controller: 'task'      
   
