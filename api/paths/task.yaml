@@ -6,8 +6,7 @@ paths:
       summary: Create a task
       description: This can only be done by the logged in user.
       operationId: 'create'
-      security:
-        - AccessToken: []
+      security: []
       requestBody:
         $ref: '#/components/requestBodies/Task'
       responses:
@@ -45,8 +44,7 @@ paths:
       summary: search/filter the Task list
       description: created search/filter object.
       operationId: 'search'
-      security:
-        - AccessToken: []
+      security: []
       requestBody:
         $ref: '#/components/requestBodies/Search'
       responses:
@@ -60,8 +58,7 @@ paths:
       summary: search/filter the Task list
       description: created search/filter object.
       operationId: 'summary'
-      security:
-        - AccessToken: []
+      security: []
       requestBody:
         $ref: '#/components/requestBodies/Search'
       responses:
@@ -74,8 +71,7 @@ paths:
         - 'Task'
       summary: 'Get task by id'
       operationId: 'get'
-      security:
-        - AccessToken: []
+      security: []
       parameters:
         - name: 'id'
           in: 'path'
@@ -97,8 +93,7 @@ paths:
         - 'Task'
       summary: "Update Task"
       operationId: 'update'
-      security:
-        - AccessToken: []
+      security: []
       parameters:
         - name: 'id'
           in: 'path'
@@ -122,8 +117,7 @@ paths:
         - 'Task'
       summary: 'Delete task by _id'
       operationId: 'delete'
-      security:
-        - AccessToken: []
+      security: []
       parameters:
         - name: 'id'
           in: 'path'
@@ -145,8 +139,7 @@ paths:
         - 'Task'
       summary: 'List out all diagnostics'
       operationId: 'list'
-      security:
-        - AccessToken: []
+      security: []
       responses:
         '200':
           description: successful operation
