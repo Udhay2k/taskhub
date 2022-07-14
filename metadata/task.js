@@ -172,6 +172,7 @@ module.exports.metadata = () => {
     ]
   };
 }
+
 module.exports.taskUpdate = () => {
   return {
     creatable: true,

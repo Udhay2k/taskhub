@@ -13,6 +13,7 @@
   "license": "Unlicense",
   "private": true,
   "dependencies": {
+    "ably": "^1.2.27",
     "async": "^3.2.0",
     "body-parser": "^1.19.0",
     "cross-env": "^7.0.3",
