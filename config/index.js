@@ -1,6 +1,6 @@
 
 module.exports = {
     collections: {
-        "taskhub": "taskhub"
+        "tasks": "tasks"
     }
 };
