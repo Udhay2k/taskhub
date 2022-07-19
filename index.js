@@ -17,6 +17,7 @@ const cluster = require('cluster'),
   swaggerTools = require('oas-tools'),
   serverPort = process.env.PORT,
   auth = require("./utils/auth.js"),
+  ably = require("./utils/ablyauth"),
   __util = require('./utils/util.js'),
   log = require("./utils/logger.js");
 
@@ -202,11 +203,17 @@ swaggerTools.initializeMiddleware(swaggerDoc, app, function (middleware) {
   //   });
 
   // } else {
-  // initDatabases.init();
-  // Serve the Swagger documents and Swagger UI
-
-  http.createServer(app).listen(serverPort, function () {
+  http.createServer(app).listen(serverPort, async function () {
     console.log("Your server is listening on port %d (http://localhost:%d)", serverPort, serverPort);
+
+    /********************************* ably signal ***************************************/
+    let ablyChannelId = "sessionId";
+    let ablyClient = new ably();
+
+    await ablyClient.sendSignal(ablyChannelId, { "type": 'endSession', "data": 'server' });
+
+    /**************************************************************************************/
+
   }).on("error", onError);
 
   console.log(`Worker ${process.pid} started`);
